@@ -1,0 +1,15 @@
+{%extends 'login.html'%}
+{%block title%}
+注册页面
+{%endblock%}
+{%block bodymsg%}
+ <form name='zhuce_form' action='/zhuce' method='POST'>
+   {%csrf_token %}
+<div align="center">
+     {{zhuce_form.as_p }}
+</div>
+<div align="center">
+   <input type='submit' value='注册'><br/>
+</div>
+ </form>
+{%endblock%}

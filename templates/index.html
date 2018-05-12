@@ -1,0 +1,60 @@
+{%extends 'base.html'%}
+{%block title%}
+首页
+{%endblock%}
+{%block nav%}
+{%if 'admin' in username%}
+ <li role="presentation" class="active"><a href="#">运动员信息</a></li>
+  <li role="presentation"><a href="score">录入成绩</a></li>
+  <li role="presentation"><a href="chaxun">查询</a></li>
+{%else%}
+<li role="presentation" class="active"><a href="#">报名</a></li>
+  <li role="presentation"><a href="chaxun">查询</a></li>
+{%endif%}
+{%endblock%}
+{%block headingmsg%}
+{%if 'admin' in username%}
+<h1 style='font-family:微软雅黑;font-size:16pt'><em>已录入的运动员信息:</em></h1>
+{%else%}
+<h1 style='font-family:微软雅黑;font-size:16pt'><em>请在此处报名:</em></h1>
+{%endif%}
+{%endblock%}
+{%block bodymsg%}
+{%if 'admin' in username%}
+<form name='score_form' action='/tijiao' method='GET'>
+<table class='table'>
+<tr>
+<th>编号</th>
+<th>姓名</th>
+<th>班级</th>
+<th>项目</th>
+{%block line%}{%endblock%}
+</tr>
+{%for var in list%}
+<tr>
+<td>{{var.playno}}</td>
+<td>{{var.playname}}</td>
+<td>{{var.class1}}</td>
+<td>{{var.xiangmu}}</td>
+{%block col%}{%endblock%}
+</tr>
+{%endfor%}
+</table>
+</form>
+{%else%}
+<div class='row' >
+  <div class="col-md-3 col-md-offset-4" >
+<form name='baoming_form' action='/' method='POST' >
+   {%csrf_token %}
+   <div>
+     {{baoming_form.as_p }}
+   </div>
+   <input type='submit' value='确定'><br/>
+ </form>
+ </div>
+ </div>
+{%endif%}
+{%endblock%}
+{%block footermsg%}
+<p>{{message}}</p>
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block title%}
+登录页面
+{%endblock%}
+{%block nav%}
+{%endblock%}
+{%block headingmsg%}
+
+{%endblock%}
+{%block bodymsg%}
+ <form name='login_form' action='/login' method='POST' align='center'>
+   {%csrf_token %}
+   <div align="center">
+     {{login_form.as_p }}
+   </div>
+   <div class='row' >
+  <div class="col-md-1 col-md-offset-5" >
+   <input type='submit' value='登录'><br/>
+   </div>
+   <div class="col-md-1 col-md-offset-0" >
+   <a href='zhuce'>注册</a>
+   </div>
+   </div>
+ </form>
+{%endblock%}
+{%block footermsg%}
+<p>{{message}}</p>
+{%endblock%}

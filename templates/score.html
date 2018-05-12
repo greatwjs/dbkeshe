@@ -1,0 +1,30 @@
+{%extends 'index.html'%}
+{%block title%}
+录入成绩
+{%endblock%}
+{%block script%}
+function disp_alert()
+{
+alert("录入成功!")
+}
+{%endblock%}
+{%block nav%}
+ <li role="presentation" ><a href="/">运动员信息</a></li>
+  <li role="presentation" class="active"><a href="#">录入成绩</a></li>
+  <li role="presentation"><a href="chaxun">查询</a></li>
+{%endblock%}
+{%block headingmsg%}
+<h1 style='font-family:微软雅黑;font-size:16pt'><em>在此处录入成绩:</em></h1>
+{%endblock%}
+{%block bodymsg%}
+{%for var in list%}
+ <div class="form-group">
+     <label for="score">{{var.playname}}|项目:{{var.xiangmu}}</label>
+     <input type="text" class="form-control" name="score" placeholder="输入成绩">
+  </div>
+{%endfor%}
+<center><button type="submit" class="btn btn-default" onclick="disp_alert()">确定</button></center>
+{%endblock%}
+{%block footermsg%}
+<p>{{message}}</p>
+{%endblock%}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    {%load staticfiles%}
+    <title>
+       {%block title%} {%endblock%}
+    </title>
+  <script type="text/javascript">
+    {%block script%}{%endblock%}
+  </script>
+  <style>
+  body{background-image:url({% static "images/11.jpg"%});
+  background-repeat:repeat;background-position:center}
+  .right{
+left:450px;
+position:relative;
+}
+  }
+  </style>
+</head>
+<body>
+<div class='head'>
+    <a  href="#"><img src="{%static "images/tubiao.png"%}" ></a>
+    {%if username%}
+    <em><a href="#" class="right    ">{{username}}</a></em>
+    <right><em><a href="/logout" class="right    ">注销</a></em></right>
+    {%else%}
+    <right><em><a  href="/login" class="right    ">未登录</a></em></right>
+    {%endif%}
+</div>
+<div class='row' >
+  <div class="col-md-10 col-md-offset-1" >
+<div>
+<ul class="nav nav-pills nav-justified">
+   {%block nav%}
+  <li role="presentation" class="active"><a href="#">运动员信息</a></li>
+  <li role="presentation"><a href="/">录入成绩</a></li>
+  <li role="presentation"><a href="#">查询</a></li>
+  {%endblock%}
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class='row' >
+  <div class="col-md-10 col-md-offset-1" >
+   <div class='cintainer' >
+     <div class='panel panel-primary'>
+         <div class='panel-heading'>
+           {%block headingmsg%}
+
+           {%endblock%}
+         </div>
+         <div class='panel-body'>
+             {%block bodymsg%} {%endblock%}
+         </div>
+         <div class='panel-footer'>
+             {%block footermsg%} {%endblock%}
+         </div>
+      </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

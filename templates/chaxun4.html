@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block title%}
+班级成绩
+{%endblock%}
+{%block nav%}
+<li role="presentation" ><a href="/">运动员信息</a></li>
+  <li role="presentation" ><a href="score">录入成绩</a></li>
+  <li role="presentation" class="active"><a href="chaxun">查询</a></li>
+{%endblock%}
+{%block headingmsg%}
+<h1 style='font-family:微软雅黑;font-size:16pt'><em>在此处查询:</em></h1>
+{%endblock%}
+{%block bodymsg%}
+<table class='table'>
+<tr>
+<th>班级</th>
+<th>成绩</th>
+</tr>
+{%for var in list%}
+<tr>
+<td>{{var.class1}}</td>
+<td>{{var.score}}</td>
+</tr>
+{%endfor%}
+</table>
+{%endblock%}
+{%block footermsg%}
+<div class='alert alert-warning'><h1>{{message}}</h1>
+</div>
+{%endblock%}

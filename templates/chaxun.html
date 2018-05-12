@@ -1,0 +1,69 @@
+{%extends 'base.html'%}
+{%block title%}
+查询成绩
+{%endblock%}
+{%block nav%}
+{%if 'admin' in username%}
+ <li role="presentation" ><a href="/">运动员信息</a></li>
+  <li role="presentation" ><a href="score">录入成绩</a></li>
+  <li role="presentation" class="active"><a href="chaxun">查询</a></li>
+{%else%}
+<li role="presentation" ><a href="/">报名</a></li>
+  <li role="presentation" class="active"><a href="#">查询</a></li>
+{%endif%}
+{%endblock%}
+{%block headingmsg%}
+<h1 style='font-family:微软雅黑;font-size:16pt'><em>在此处查询:</em></h1>
+{%if list_4%}
+<div>
+<table class='table'>
+<tr>
+<th>姓名</th>
+<th>名次</th>
+</tr>
+{%for var in list_4%}
+<tr>
+<td>{{var.playname}}</td>
+<td>{{var.mingci}}</td>
+</tr>
+{%endfor%}
+</table>
+</div>
+{%else%}
+<h1 style='font-family:微软雅黑;font-size:16pt'>{{message}}</h1>
+{%endif%}
+{%endblock%}
+{%block bodymsg%}
+<form name='chaxun_form' action='/chaxun1' method='GET'>
+ <div form-group>
+     <label for="chaxun1">运动员成绩查询:</label>
+     <input type="text" class="form-control" name="chaxun1" placeholder="输入编号查询">
+ </div>
+ <h1>
+    <center><button type="submit" class="btn btn-primary" >确定</button></center>
+</h1>
+ </form>
+ <form name='chaxun_form' action='/chaxun2' method='GET'>
+ <div form-group>
+     <label for="chaxun2">团体成绩查询:</label>
+     <input type="text" class="form-control" name="chaxun2" placeholder="输入班号查询">
+ </div>
+ <h1>
+ <div   align="center">
+    <button type="submit" class="btn btn-primary" >确定</button>
+    <button type="submit" class="btn btn-default" ><a href="chaxun4">查看班级排名</a></button>
+</div>
+ </h1>
+ </form>
+ <form name='chaxun_form' action='/chaxun3' method='GET'>
+ <div form-group>
+     <label for="chaxun3">单项成绩查询:</label>
+     <input type="text" class="form-control" name="chaxun3" placeholder="输入项目查询">
+ </div>
+ <h1>
+    <center><button type="submit" class="btn btn-primary" >确定</button></center>
+ </h1>
+ </form>
+{%endblock%}
+{%block footermsg%}
+{%endblock%}
